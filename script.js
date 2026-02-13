@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Intro sécurité
+    // INTRO
     setTimeout(function(){
         const intro = document.getElementById("intro");
         if(intro) intro.style.display = "none";
     },3000);
 
-    // Horloge
+    // HORLOGE
     setInterval(function(){
         const now = new Date();
         const clock = document.getElementById("clock");
         if(clock) clock.innerText = now.toLocaleTimeString();
     },1000);
 
-    // Spectateurs fake
+    // SPECTATEURS
     let viewers = 12458;
     setInterval(function(){
         viewers += Math.floor(Math.random()*20-10);
@@ -21,21 +21,30 @@ document.addEventListener("DOMContentLoaded", function() {
         if(v) v.innerText = "🔥 " + viewers.toLocaleString() + " spectateurs en direct";
     },3000);
 
-    // Minutes qui montent
+    // MINUTES QUI MONTENT (VERSION SANS APOSTROPHE)
     setInterval(function(){
         document.querySelectorAll(".minute").forEach(function(el){
-            if(el.innerText.includes("'")){
-                let num = parseInt(el.innerText);
-                if(!isNaN(num)){
-                    num++;
-                    el.innerText = num + "'";
-                }
+
+            let text = el.innerText;
+
+            // Ignore HT
+            if(text.trim().toUpperCase() === "HT") return;
+
+            // Récupère le nombre seulement
+            let number = parseInt(text.replace(/\D/g, ''));
+
+            if(!isNaN(number)){
+                number++;
+                el.innerText = number + "’";
             }
+
         });
     },60000);
 
-    // GOAL clic sur match
+
+    // GOAL AU CLIC
     document.querySelectorAll(".match").forEach(function(match){
+
         match.addEventListener("click", function(){
 
             const score = match.querySelector(".score");
@@ -50,25 +59,24 @@ document.addEventListener("DOMContentLoaded", function() {
             home++;
             score.innerText = home + " - " + away;
 
-            const team = match.querySelector(".team");
+            // Ajout GOOOAAALLL
+            const firstTeam = match.querySelector(".team");
+
             const goal = document.createElement("span");
             goal.className = "goal";
-            goal.innerText = " GOOOOAAALLL!";
-            team.appendChild(goal);
+            goal.innerText = " GOOOOOOAAALLL!";
+            firstTeam.appendChild(goal);
 
-            const sound = document.getElementById("goalSound");
-            if(sound){
-                sound.currentTime = 0;
-                sound.play().catch(()=>{});
-            }
+            setTimeout(function(){
+                goal.remove();
+            },3000);
 
-            setTimeout(()=>{goal.remove();},3000);
         });
+
     });
 
 });
 
-// Navigation
 function showTab(id){
     document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
     document.getElementById(id).classList.add("active");
