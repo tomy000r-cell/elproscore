@@ -1,14 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // INTRO
-    const intro = document.getElementById("introScreen");
-    if (intro) {
-        setTimeout(() => {
-            intro.style.display = "none";
-        }, 2000);
-    }
-
-    // HORLOGE
+    // Horloge live
     setInterval(() => {
         const now = new Date();
         const clock = document.getElementById("liveClock");
@@ -17,17 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 1000);
 
-    // MINUTES QUI DÉFILENT
-    let minute = 57;
-    setInterval(() => {
-        const minuteEl = document.getElementById("minute1");
-        if (minuteEl) {
-            minute++;
-            minuteEl.innerText = minute + "'";
-        }
-    }, 60000); // 1 minute réelle = 1 minute match
-
-    // SPECTATEURS SIMULÉS
+    // Spectateurs simulés
     let viewers = 12458;
     setInterval(() => {
         viewers += Math.floor(Math.random() * 20 - 10);
@@ -38,11 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 3000);
 
+    // Minutes qui montent
+    setInterval(() => {
+        const minuteElements = document.querySelectorAll(".minute[data-minute]");
+        minuteElements.forEach(el => {
+            let current = parseInt(el.getAttribute("data-minute"));
+            current++;
+            el.setAttribute("data-minute", current);
+            el.innerText = current + "'";
+        });
+    }, 60000);
 });
 
-// NAVIGATION
+// Navigation
 function showSection(sectionId, event) {
-
     document.querySelectorAll(".section").forEach(section => {
         section.classList.remove("active-section");
     });
@@ -51,38 +42,36 @@ function showSection(sectionId, event) {
         button.classList.remove("active");
     });
 
-    const section = document.getElementById(sectionId);
-    if (section) section.classList.add("active-section");
-
-    if (event) event.target.classList.add("active");
+    document.getElementById(sectionId).classList.add("active-section");
+    event.target.classList.add("active");
 }
 
-// BUT INTÉGRÉ
+// But
 function triggerGoal(matchElement) {
 
-    const scoreElement = matchElement.querySelector(".score");
+    const scoreEl = matchElement.querySelector(".score");
     const homeTeam = matchElement.querySelector(".home");
     const sound = document.getElementById("goalSound");
 
-    if (!scoreElement || !homeTeam) return;
+    if (!scoreEl || !homeTeam) return;
 
-    let parts = scoreElement.innerText.split(" - ");
+    let parts = scoreEl.innerText.split(" - ");
     let homeScore = parseInt(parts[0]) + 1;
     let awayScore = parseInt(parts[1]);
 
-    scoreElement.innerText = homeScore + " - " + awayScore;
+    scoreEl.innerText = homeScore + " - " + awayScore;
 
-    const goalTag = document.createElement("span");
-    goalTag.innerText = " 🔥 GOOOOAAALLL!";
-    goalTag.style.color = "gold";
-    goalTag.style.fontWeight = "bold";
-    goalTag.style.marginLeft = "10px";
+    const goal = document.createElement("span");
+    goal.className = "goal-flash";
+    goal.innerText = " GOOOOAAALLL!";
+    homeTeam.appendChild(goal);
 
-    homeTeam.appendChild(goalTag);
-
-    if (sound) sound.play();
+    if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(() => {});
+    }
 
     setTimeout(() => {
-        goalTag.remove();
+        goal.remove();
     }, 3000);
 }
