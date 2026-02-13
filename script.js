@@ -1,3 +1,10 @@
+// Intro screen
+window.onload = () => {
+  setTimeout(() => {
+    document.getElementById("introScreen").style.display = "none";
+  }, 2500);
+};
+
 function showSection(sectionId, event) {
   document.querySelectorAll('.section').forEach(section => {
     section.classList.remove('active-section');
@@ -12,7 +19,7 @@ function showSection(sectionId, event) {
   event.target.classList.add('active');
 }
 
-/* Simulation BUT */
+// Goal simulation
 setTimeout(() => {
   document.getElementById("score1").innerText = "2 - 0";
   document.getElementById("minute1").innerText = "57'";
@@ -26,8 +33,10 @@ setTimeout(() => {
 
 }, 6000);
 
-/* Intensité animation */
+// Intensity bar
 setInterval(() => {
   const bar = document.getElementById("intensityBar");
-  bar.style.width = Math.floor(Math.random() * 100) + "%";
+  if (bar) {
+    bar.style.width = Math.floor(Math.random() * 100) + "%";
+  }
 }, 2000);
