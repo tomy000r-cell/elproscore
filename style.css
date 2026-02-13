@@ -2,12 +2,17 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    background: linear-gradient(-45deg, #0a0f1f, #111827, #1a1f3a, #0f172a);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    overflow-x: hidden;
+    background: radial-gradient(circle at 20% 30%, #1e3a8a 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #312e81 0%, transparent 40%),
+                linear-gradient(135deg, #0a0f1f, #111827);
+    background-size: 200% 200%;
+    animation: moveBackground 15s ease infinite;
 }
 
-@keyframes gradientMove {
+/* Animation du fond */
+
+@keyframes moveBackground {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -41,7 +46,7 @@ header {
 
 header h1 {
     color: gold;
-    text-shadow: 0 0 10px gold, 0 0 30px orange;
+    text-shadow: 0 0 15px gold, 0 0 40px orange;
 }
 
 nav button {
@@ -52,6 +57,7 @@ nav button {
     margin: 5px;
     border-radius: 20px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 nav button.active,
@@ -76,19 +82,21 @@ nav button:hover {
 
 .match {
     border: 2px solid gold;
-    padding: 10px;
+    padding: 12px;
     margin: 15px auto;
     width: 80%;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 15px rgba(255,215,0,0.4);
+    box-shadow: 0 0 20px rgba(255,215,0,0.6);
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.05);
 }
 
 .minute {
     background: red;
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 8px;
 }
 
@@ -101,9 +109,10 @@ nav button:hover {
     text-align: center;
     font-size: 3rem;
     color: gold;
-    text-shadow: 0 0 20px gold, 0 0 40px orange;
+    text-shadow: 0 0 20px gold, 0 0 60px orange;
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 #goalOverlay.show {
