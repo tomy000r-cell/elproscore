@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     overflow-x: hidden;
-    background: radial-gradient(circle at 20% 30%, #7f0000 0%, transparent 40%),
+    background: radial-gradient(circle at 20% 30%, #8b0000 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, #b30000 0%, transparent 40%),
                 linear-gradient(135deg, #1a0000, #330000);
     background-size: 200% 200%;
@@ -16,26 +16,48 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+#introScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOutIntro 2s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeOutIntro {
+    to { opacity: 0; visibility: hidden; }
+}
+
+.intro-content h1 {
+    color: gold;
+    font-size: 3rem;
+    text-shadow: 0 0 20px gold;
+}
+
 header {
     text-align: center;
     padding: 20px;
 }
 
-header h1 {
+.logo {
     color: gold;
-    text-shadow: 0 0 15px gold, 0 0 40px orange;
+    text-shadow: 0 0 15px gold;
 }
 
 #liveClock {
-    font-size: 18px;
+    margin-top: 5px;
     opacity: 0.8;
 }
 
 #liveViewers {
-    margin: 5px 0 15px 0;
+    margin: 5px 0 15px;
     color: #ff4d4d;
     font-weight: bold;
-    text-shadow: 0 0 10px red;
 }
 
 nav button {
@@ -69,20 +91,18 @@ nav button:hover {
     border: 2px solid gold;
     padding: 12px;
     margin: 15px auto;
-    width: 80%;
+    width: 85%;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 20px rgba(255,215,0,0.6);
-    backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 20px rgba(255,215,0,0.6);
     transition: 0.3s;
-    position: relative;
 }
 
 .match:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .minute {
@@ -91,14 +111,14 @@ nav button:hover {
     border-radius: 8px;
 }
 
-.goal-tag {
+.goal-flash {
     color: gold;
     font-weight: bold;
     margin-left: 10px;
-    animation: flashGoal 0.8s infinite alternate;
+    animation: flash 0.6s infinite alternate;
 }
 
-@keyframes flashGoal {
+@keyframes flash {
     from { text-shadow: 0 0 5px gold; }
     to { text-shadow: 0 0 20px red; }
 }
