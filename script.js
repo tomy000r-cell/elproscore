@@ -113,4 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
         firstSection.style.transform = "translateY(0)";
     }
 
+
+});
+window.addEventListener("load", function () {
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
+  }, 4000);
 });
