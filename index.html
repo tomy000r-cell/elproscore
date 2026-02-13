@@ -9,7 +9,6 @@
 
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="loader-content">
     <h1>👑 ELPROSCORE</h1>
@@ -17,8 +16,9 @@
   </div>
 </div>
 
-<header>
+<header class="main-header">
   <h1 class="logo">👑 ELPROSCORE</h1>
+  <div class="header-glow"></div>
 </header>
 
 <nav>
@@ -32,19 +32,18 @@
 <section id="live" class="section active-section">
   <h2>Matchs en direct - Premier League</h2>
 
-  <!-- Intensité match -->
   <div class="intensity-container">
     <div class="intensity-bar" id="intensityBar"></div>
   </div>
 
-  <div class="match">
+  <div class="match premium-card">
     <span>Manchester City</span>
     <span class="score" id="score1">1 - 0</span>
     <span>Arsenal</span>
     <span class="status blink" id="minute1">55'</span>
   </div>
 
-  <div class="match">
+  <div class="match premium-card">
     <span>Liverpool</span>
     <span class="score">2 - 2</span>
     <span>Chelsea</span>
@@ -56,28 +55,22 @@
 <section id="standings" class="section">
   <h2>Classement - Premier League</h2>
 
-  <div class="standing">1. Manchester City <span>91 pts</span></div>
-  <div class="standing">2. Arsenal <span>89 pts</span></div>
-  <div class="standing">3. Liverpool <span>82 pts</span></div>
-  <div class="standing">4. Aston Villa <span>68 pts</span></div>
+  <div class="standing premium-card">1. Manchester City <span>91 pts</span></div>
+  <div class="standing premium-card">2. Arsenal <span>89 pts</span></div>
+  <div class="standing premium-card">3. Liverpool <span>82 pts</span></div>
+  <div class="standing premium-card">4. Aston Villa <span>68 pts</span></div>
 </section>
 
 <section id="results" class="section">
   <h2>Résultats récents - Premier League</h2>
 
-  <div class="match">
+  <div class="match premium-card">
     <span>Manchester United</span>
     <span class="score">3 - 1</span>
     <span>Brighton</span>
     <span class="status">FT</span>
   </div>
 
-  <div class="match">
-    <span>West Ham</span>
-    <span class="score">2 - 0</span>
-    <span>Everton</span>
-    <span class="status">FT</span>
-  </div>
 </section>
 
 </main>
@@ -94,4 +87,3 @@ ELPROSCORE © 2026 - Black Gold Edition
 
 </body>
 </html>
-
