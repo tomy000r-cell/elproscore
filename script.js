@@ -6,7 +6,6 @@ window.onload = function () {
 
     updateClock();
     setInterval(updateClock, 1000);
-
     simulateViewers();
 };
 
@@ -23,16 +22,28 @@ function showSection(sectionId, event) {
     event.target.classList.add("active");
 }
 
-function triggerGoal() {
-    const goal = document.getElementById("goalOverlay");
-    const sound = document.getElementById("goalSound");
+function triggerGoal(matchElement) {
 
-    goal.classList.add("show");
-    sound.play();
+    const scoreElement = matchElement.querySelector(".score");
+    const homeTeam = matchElement.querySelector(".home");
+
+    let score = scoreElement.innerText.split(" - ");
+    let homeScore = parseInt(score[0]) + 1;
+    let awayScore = parseInt(score[1]);
+
+    scoreElement.innerText = homeScore + " - " + awayScore;
+
+    const goalTag = document.createElement("span");
+    goalTag.classList.add("goal-tag");
+    goalTag.innerText = "GOOOAAALLL!";
+
+    homeTeam.appendChild(goalTag);
+
+    document.getElementById("goalSound").play();
 
     setTimeout(() => {
-        goal.classList.remove("show");
-    }, 2000);
+        goalTag.remove();
+    }, 3000);
 }
 
 function updateClock() {
