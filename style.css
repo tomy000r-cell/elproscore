@@ -1,184 +1,137 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
-  background: radial-gradient(circle at 30% 30%, #111, #000 80%);
-  background-size: 400% 400%;
-  animation: galaxyMove 20s infinite alternate;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000000);
   color: white;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* Background animation */
-@keyframes galaxyMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* Loader */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeOut 2s ease forwards;
-  animation-delay: 2s;
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-/* Header */
-.main-header {
-  position: relative;
-  margin-top: 30px;
-}
-
+/* Logo */
 .logo {
-  font-size: 48px;
-  color: #ffd700;
-  text-shadow: 0 0 20px #ffd700;
-  animation: glowPulse 2s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from { text-shadow: 0 0 15px #ffd700; }
-  to { text-shadow: 0 0 35px #ffae00; }
+  font-size: 40px;
+  margin-top: 30px;
+  color: gold;
+  text-shadow: 0 0 20px gold;
 }
 
 /* Navigation */
+nav {
+  margin: 20px 0;
+}
+
 nav button {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 20px;
+  border: 2px solid gold;
   background: transparent;
-  border: 2px solid #ffd700;
-  color: #ffd700;
-  padding: 10px 25px;
-  margin: 15px;
-  border-radius: 30px;
+  color: gold;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 nav button:hover,
 nav button.active {
-  background: linear-gradient(45deg, #ffd700, #ffae00);
+  background: gold;
   color: black;
-  box-shadow: 0 0 20px #ffd700;
+  box-shadow: 0 0 15px gold;
 }
 
 /* Sections */
 .section {
   display: none;
-  padding: 20px;
 }
 
-.section.active-section {
+.active-section {
   display: block;
-  animation: fadeIn 0.6s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Premium Card */
-.premium-card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,215,0,0.3);
-  backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 10px rgba(255,215,0,0.2),
-              0 0 15px rgba(255,215,0,0.3);
-  transition: 0.4s;
-}
-
-.premium-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 30px rgba(255,215,0,0.7);
-}
-
-/* Match layout */
-.match {
+/* Match cards */
+.match, .standing {
+  background: #111;
+  margin: 15px auto;
+  padding: 15px;
+  width: 80%;
+  border-radius: 15px;
+  border: 1px solid gold;
+  box-shadow: 0 0 15px rgba(255,215,0,0.4);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 20px auto;
-  padding: 18px;
-  width: 90%;
-  max-width: 750px;
-  border-radius: 15px;
 }
 
+/* Score */
 .score {
-  font-size: 24px;
   font-weight: bold;
-  color: #ffd700;
+  font-size: 20px;
+  color: gold;
 }
 
+/* Status */
 .status {
   background: red;
-  padding: 6px 12px;
-  border-radius: 20px;
+  padding: 5px 10px;
+  border-radius: 15px;
   font-size: 12px;
 }
 
-.blink {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0.5; }
-}
-
-/* Intensity */
+/* Intensity bar */
 .intensity-container {
   width: 80%;
-  height: 12px;
-  background: rgba(255,255,255,0.1);
-  margin: 25px auto;
-  border-radius: 30px;
-  overflow: hidden;
+  height: 8px;
+  background: #333;
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
 .intensity-bar {
   height: 100%;
-  width: 50%;
-  background: linear-gradient(90deg, #ffd700, #ffae00);
-  transition: 0.5s;
+  width: 30%;
+  background: gold;
+  border-radius: 10px;
+  transition: width 0.5s ease;
 }
 
-/* Standings */
-.standing {
-  margin: 15px auto;
-  padding: 15px;
-  width: 80%;
-  border-radius: 12px;
+/* Goal overlay */
+.goal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: gold;
+  text-shadow: 0 0 30px gold;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
 }
 
-/* Telegram */
+.goal-overlay.show {
+  opacity: 1;
+}
+
+/* Telegram button */
 .telegram-btn {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: linear-gradient(45deg, #ffd700, #ffae00);
+  bottom: 20px;
+  right: 20px;
+  background: gold;
   color: black;
-  padding: 14px 22px;
-  border-radius: 40px;
+  padding: 10px 15px;
+  border-radius: 20px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 0 20px #ffd700;
-  transition: 0.3s;
+  box-shadow: 0 0 15px gold;
 }
 
-.telegram-btn:hover {
-  transform: scale(1.1);
+/* Footer */
+footer {
+  margin: 40px 0 20px;
+  opacity: 0.6;
 }
