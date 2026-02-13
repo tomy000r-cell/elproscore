@@ -170,3 +170,32 @@ nav button.active {
     gap: 10px;
   }
 }
+/* ===== GOAL EFFECT ===== */
+
+.goal-overlay {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ffae00;
+  animation: goalFlash 2s ease forwards;
+  z-index: 9999;
+}
+
+@keyframes goalFlash {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+.goal-pulse {
+  animation: pulseScore 0.5s infinite alternate;
+}
+
+@keyframes pulseScore {
+  from { transform: scale(1); }
+  to { transform: scale(1.3); }
+}
