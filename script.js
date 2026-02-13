@@ -1,7 +1,13 @@
 window.onload = function () {
     setTimeout(() => {
-        document.getElementById("introScreen").style.display = "none";
+        const intro = document.getElementById("introScreen");
+        if (intro) intro.style.display = "none";
     }, 2000);
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    simulateViewers();
 };
 
 function showSection(sectionId, event) {
@@ -19,9 +25,28 @@ function showSection(sectionId, event) {
 
 function triggerGoal() {
     const goal = document.getElementById("goalOverlay");
+    const sound = document.getElementById("goalSound");
+
     goal.classList.add("show");
+    sound.play();
 
     setTimeout(() => {
         goal.classList.remove("show");
     }, 2000);
+}
+
+function updateClock() {
+    const now = new Date();
+    document.getElementById("liveClock").innerText =
+        "🕒 " + now.toLocaleTimeString();
+}
+
+function simulateViewers() {
+    let viewers = 12458;
+
+    setInterval(() => {
+        viewers += Math.floor(Math.random() * 20 - 10);
+        document.getElementById("liveViewers").innerText =
+            "🔥 " + viewers.toLocaleString() + " spectateurs en direct";
+    }, 3000);
 }
