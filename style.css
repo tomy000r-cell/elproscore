@@ -6,14 +6,21 @@
 }
 
 body {
-  background: radial-gradient(circle at 20% 20%, #1a1a1a, #000000 70%);
+  background: radial-gradient(circle at 30% 30%, #1a1a1a, #000000 80%);
+  background-size: 400% 400%;
+  animation: galaxyMove 20s infinite alternate;
   color: white;
   text-align: center;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* LOADER */
+/* Galaxy animation */
+@keyframes galaxyMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Loader */
 #loader {
   position: fixed;
   width: 100%;
@@ -30,29 +37,11 @@ body {
 .loader-content h1 {
   color: #ffd700;
   font-size: 40px;
-  animation: pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse {
-  from { text-shadow: 0 0 10px #ffd700; }
-  to { text-shadow: 0 0 40px #ffae00; }
+  text-shadow: 0 0 20px #ffd700;
 }
 
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
-}
-
-/* Spotlight */
-body::after {
-  content: "";
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,215,0,0.2), transparent 60%);
-  transform: translate(-50%, -50%);
-  transition: 0.1s;
 }
 
 /* Logo */
@@ -60,7 +49,7 @@ body::after {
   font-size: 42px;
   color: #ffd700;
   margin: 30px 0;
-  text-shadow: 0 0 20px #ffd700;
+  text-shadow: 0 0 25px #ffd700;
 }
 
 /* Navigation */
@@ -140,6 +129,23 @@ nav button.active {
   50% { opacity: 0.5; }
 }
 
+/* Intensity bar */
+.intensity-container {
+  width: 80%;
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.intensity-bar {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #ffd700, #ffae00);
+  transition: 0.5s;
+}
+
 /* Standings */
 .standing {
   margin: 10px auto;
@@ -149,29 +155,7 @@ nav button.active {
   border-radius: 8px;
 }
 
-/* Telegram */
-.telegram-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ffd700;
-  color: black;
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 0 15px #ffd700;
-}
-
-/* Mobile */
-@media(max-width: 768px){
-  .match {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-/* ===== GOAL EFFECT ===== */
-
+/* Goal overlay */
 .goal-overlay {
   position: fixed;
   top: 40%;
@@ -198,4 +182,38 @@ nav button.active {
 @keyframes pulseScore {
   from { transform: scale(1); }
   to { transform: scale(1.3); }
+}
+
+.shake {
+  animation: shakeScreen 0.3s infinite;
+}
+
+@keyframes shakeScreen {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, 2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+/* Telegram */
+.telegram-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffd700;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 15px #ffd700;
+}
+
+/* Mobile */
+@media(max-width: 768px){
+  .match {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
