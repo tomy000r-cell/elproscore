@@ -1,20 +1,20 @@
 function showSection(sectionId, event) {
-    const sections = document.querySelectorAll(".section");
-    sections.forEach(section => {
-        section.classList.remove("active-section");
-    });
 
-    document.getElementById(sectionId).classList.add("active-section");
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active-section');
+  });
 
-    const buttons = document.querySelectorAll("nav button");
-    buttons.forEach(btn => btn.classList.remove("active"));
+  document.getElementById(sectionId).classList.add('active-section');
 
-    event.target.classList.add("active");
+  document.querySelectorAll('nav button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  if (event) {
+    event.target.classList.add('active');
+  }
 }
 
-window.addEventListener("load", function () {
-    setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.style.display = "none";
-    }, 4000);
+window.addEventListener("load", () => {
+  document.getElementById("live").classList.add("active-section");
 });
