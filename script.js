@@ -1,40 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-
-    // Intro auto hide
-    const intro = document.getElementById("introScreen");
+window.onload = function () {
     setTimeout(() => {
-        intro.style.display = "none";
+        document.getElementById("introScreen").style.display = "none";
     }, 2000);
+};
 
-});
-
-// Navigation
 function showSection(sectionId, event) {
-
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active-section');
+    document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active-section");
     });
 
-    document.getElementById(sectionId).classList.add('active-section');
-
-    document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
+    document.querySelectorAll("nav button").forEach(button => {
+        button.classList.remove("active");
     });
 
-    event.target.classList.add('active');
+    document.getElementById(sectionId).classList.add("active-section");
+    event.target.classList.add("active");
 }
 
-// Simulation goal
-setTimeout(() => {
-
-    document.getElementById("score1").innerText = "2 - 0";
-    document.getElementById("minute1").innerText = "57'";
-
-    const overlay = document.getElementById("goalOverlay");
-    overlay.classList.add("show");
+function triggerGoal() {
+    const goal = document.getElementById("goalOverlay");
+    goal.classList.add("show");
 
     setTimeout(() => {
-        overlay.classList.remove("show");
-    }, 2500);
-
-}, 6000);
+        goal.classList.remove("show");
+    }, 2000);
+}
