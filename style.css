@@ -3,14 +3,12 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     overflow-x: hidden;
-    background: radial-gradient(circle at 20% 30%, #1e3a8a 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, #312e81 0%, transparent 40%),
-                linear-gradient(135deg, #0a0f1f, #111827);
+    background: radial-gradient(circle at 20% 30%, #7f0000 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #b30000 0%, transparent 40%),
+                linear-gradient(135deg, #1a0000, #330000);
     background-size: 200% 200%;
     animation: moveBackground 15s ease infinite;
 }
-
-/* Animation du fond */
 
 @keyframes moveBackground {
     0% { background-position: 0% 50%; }
@@ -18,13 +16,11 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* INTRO */
-
 #introScreen {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #0a0f1f;
+    background: #1a0000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,8 +32,6 @@ body {
     color: gold;
     text-shadow: 0 0 20px gold, 0 0 40px orange;
 }
-
-/* HEADER */
 
 header {
     text-align: center;
@@ -66,8 +60,6 @@ nav button:hover {
     color: black;
 }
 
-/* SECTIONS */
-
 .section {
     display: none;
     text-align: center;
@@ -77,8 +69,6 @@ nav button:hover {
 .active-section {
     display: block;
 }
-
-/* MATCH */
 
 .match {
     border: 2px solid gold;
@@ -92,6 +82,11 @@ nav button:hover {
     box-shadow: 0 0 20px rgba(255,215,0,0.6);
     backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.match:hover {
+    transform: scale(1.03);
 }
 
 .minute {
@@ -99,8 +94,6 @@ nav button:hover {
     padding: 4px 8px;
     border-radius: 8px;
 }
-
-/* GOAL */
 
 #goalOverlay {
     position: fixed;
@@ -113,16 +106,35 @@ nav button:hover {
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
+    z-index: 9998;
 }
 
 #goalOverlay.show {
     opacity: 1;
 }
 
-/* FOOTER */
-
 footer {
     text-align: center;
     padding: 20px;
-    opacity: 0.6;
+    opacity: 0.7;
+}
+
+.telegram-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(45deg, #ff0000, #ff4d4d);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255,0,0,0.8);
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.telegram-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,0,0,1);
 }
