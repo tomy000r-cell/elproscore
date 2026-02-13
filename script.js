@@ -15,39 +15,40 @@ function showSection(sectionId, event) {
   }
 }
 
-/* ===== FAUX LIVE ULTRA RÉALISTE ===== */
-
 let minute = 55;
 let score1Home = 1;
 let score1Away = 0;
 
 const scoreElement = document.getElementById("score1");
 const minuteElement = document.getElementById("minute1");
+const intensityBar = document.getElementById("intensityBar");
 
-/* Animation BUT */
 function goalAnimation() {
 
   const goalOverlay = document.createElement("div");
   goalOverlay.classList.add("goal-overlay");
   goalOverlay.innerHTML = "⚽ GOOOOAAAL ⚽";
-
   document.body.appendChild(goalOverlay);
 
   scoreElement.classList.add("goal-pulse");
+  document.body.classList.add("shake");
 
   setTimeout(() => {
     goalOverlay.remove();
     scoreElement.classList.remove("goal-pulse");
+    document.body.classList.remove("shake");
   }, 2000);
 }
 
-/* Simulation live */
 setInterval(() => {
 
   minute++;
   minuteElement.innerText = minute + "'";
 
-  if (Math.random() < 0.15) {
+  const randomIntensity = Math.floor(Math.random() * 100);
+  intensityBar.style.width = randomIntensity + "%";
+
+  if (Math.random() < 0.2) {
 
     if (Math.random() < 0.5) {
       score1Home++;
@@ -59,10 +60,4 @@ setInterval(() => {
     goalAnimation();
   }
 
-}, 5000);
-
-/* Spotlight souris */
-document.addEventListener("mousemove", (e) => {
-  document.body.style.setProperty('--x', e.clientX + 'px');
-  document.body.style.setProperty('--y', e.clientY + 'px');
-});
+}, 4000);
