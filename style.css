@@ -28,7 +28,6 @@ header h1 {
 
 #liveClock {
     font-size: 18px;
-    margin-top: 5px;
     opacity: 0.8;
 }
 
@@ -47,26 +46,19 @@ nav button {
     margin: 5px;
     border-radius: 20px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 nav button.active,
 nav button:hover {
     background: gold;
     color: black;
-    transform: scale(1.05);
 }
 
 .section {
     display: none;
     text-align: center;
     padding: 20px;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .active-section {
@@ -86,6 +78,7 @@ nav button:hover {
     backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.05);
     transition: 0.3s;
+    position: relative;
 }
 
 .match:hover {
@@ -98,31 +91,16 @@ nav button:hover {
     border-radius: 8px;
 }
 
-#goalOverlay {
-    position: fixed;
-    top: 40%;
-    width: 100%;
-    text-align: center;
-    font-size: 3rem;
+.goal-tag {
     color: gold;
-    text-shadow: 0 0 20px gold, 0 0 60px orange;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 9998;
+    font-weight: bold;
+    margin-left: 10px;
+    animation: flashGoal 0.8s infinite alternate;
 }
 
-#goalOverlay.show {
-    opacity: 1;
-    animation: shake 0.4s ease;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
+@keyframes flashGoal {
+    from { text-shadow: 0 0 5px gold; }
+    to { text-shadow: 0 0 20px red; }
 }
 
 footer {
@@ -143,10 +121,8 @@ footer {
     font-weight: bold;
     box-shadow: 0 0 15px rgba(255,0,0,0.8);
     transition: 0.3s;
-    z-index: 9999;
 }
 
 .telegram-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255,0,0,1);
 }
