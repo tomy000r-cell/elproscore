@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>ELPROSCORE</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>ELPROSCORE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- INTRO SCREEN -->
 <div id="introScreen">
-    <h1>👑 ELPROSCORE</h1>
+    <div class="intro-content">
+        <h1>👑 ELPROSCORE</h1>
+    </div>
 </div>
 
 <header>
-    <h1>👑 ELPROSCORE</h1>
+    <h1 class="logo">👑 ELPROSCORE</h1>
 
     <div id="liveClock"></div>
     <div id="liveViewers">🔥 12 458 spectateurs en direct</div>
@@ -31,7 +35,7 @@
         <span class="team home">Manchester City</span>
         <strong class="score">2 - 0</strong>
         <span class="team away">Arsenal</span>
-        <span class="minute" id="minute1">57'</span>
+        <span class="minute" data-minute="57">57'</span>
     </div>
 
     <div class="match">
@@ -40,7 +44,6 @@
         <span>Chelsea</span>
         <span class="minute">HT</span>
     </div>
-
 </section>
 
 <section id="standings" class="section">
@@ -65,9 +68,10 @@
     🤖 AiBot El Profesor
 </a>
 
-<audio id="goalSound" src="https://www.soundjay.com/human/sounds/crowd-cheer-01.mp3"></audio>
+<audio id="goalSound" preload="auto">
+    <source src="https://www.soundjay.com/human/sounds/crowd-cheer-01.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
-
 </body>
 </html>
