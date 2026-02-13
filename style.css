@@ -1,0 +1,302 @@
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+background: radial-gradient(circle at 50% -20%, #2a2a2a 0%, #000000 60%);
+color: white;
+overflow-x: hidden;
+}
+
+/* HEADER */
+
+header {
+text-align: center;
+padding: 40px 0 20px;
+}
+
+header h1 {
+font-size: 48px;
+color: #FFD700;
+letter-spacing: 3px;
+text-shadow:
+0 0 10px #FFD700,
+0 0 20px #FFD700,
+0 0 40px rgba(255, 215, 0, 0.7);
+}
+
+/* NAV */
+
+nav {
+text-align: center;
+margin-bottom: 50px;
+}
+
+nav button {
+background: transparent;
+border: 2px solid #FFD700;
+color: #FFD700;
+padding: 12px 28px;
+margin: 0 12px;
+border-radius: 30px;
+cursor: pointer;
+font-weight: bold;
+transition: 0.3s;
+}
+
+nav button:hover,
+nav button.active {
+background: #FFD700;
+color: black;
+box-shadow:
+0 0 15px #FFD700,
+0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+/* MAIN */
+
+main {
+max-width: 900px;
+margin: auto;
+padding: 20px;
+}
+
+/* SECTION TITLES */
+
+h2 {
+font-size: 24px;
+margin-bottom: 25px;
+color: #FFD700;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+/* MATCH CARD */
+
+.match {
+background: linear-gradient(145deg, #111, #1a1a1a);
+border-radius: 15px;
+padding: 20px;
+margin-bottom: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+transition: 0.3s;
+border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.match:hover {
+transform: scale(1.02);
+box-shadow:
+0 0 20px rgba(255, 215, 0, 0.3),
+0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+/* TEAMS */
+
+.match span:first-child,
+.match span:nth-child(3) {
+width: 35%;
+font-size: 16px;
+}
+
+/* SCORE */
+
+.score {
+width: 20%;
+text-align: center;
+font-size: 28px;
+font-weight: bold;
+color: #FFD700;
+text-shadow:
+0 0 8px #FFD700,
+0 0 16px rgba(255, 215, 0, 0.7);
+}
+
+/* STATUS */
+
+.status {
+font-size: 14px;
+opacity: 0.8;
+}
+
+.blink {
+animation: pulse 1s infinite;
+color: #ff3b3b;
+}
+
+@keyframes pulse {
+0% { opacity: 1; }
+50% { opacity: 0.3; }
+100% { opacity: 1; }
+}
+
+/* STANDINGS */
+
+.standing {
+background: #141414;
+padding: 15px;
+border-radius: 10px;
+margin-bottom: 12px;
+display: flex;
+justify-content: space-between;
+transition: 0.3s;
+}
+
+.standing:hover {
+background: #1f1f1f;
+}
+
+/* TELEGRAM BUTTON */
+
+.telegram-btn {
+position: fixed;
+bottom: 25px;
+right: 25px;
+background: linear-gradient(45deg, #FFD700, #ffae00);
+color: black;
+padding: 14px 22px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: bold;
+box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+transition: 0.3s;
+}
+
+.telegram-btn:hover {
+transform: scale(1.1);
+}
+
+/* FOOTER */
+
+footer {
+text-align: center;
+margin-top: 60px;
+padding: 20px;
+opacity: 0.6;
+}
+/* STADIUM LIGHT EFFECT */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+    z-index: -1;
+}
+
+/* LIVE BADGE */
+
+.status.blink {
+    background: red;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 10px red;
+}
+/* MATCH CARD HOVER PREMIUM */
+
+.match {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.match::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,215,0,0.2), transparent);
+    transition: 0.6s;
+}
+
+.match:hover::after {
+    left: 100%;
+}
+
+.match:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255,215,0,0.4);
+}
+/* HEADER FIXE PREMIUM */
+
+header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,215,0,0.2);
+}
+
+/* Espace pour compenser */
+main {
+    padding-top: 20px;
+}
+/* PARTICLES BACKGROUND */
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(rgba(255,215,0,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: moveBackground 60s linear infinite;
+    z-index: -2;
+}
+
+@keyframes moveBackground {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-200px, -200px); }
+}
+.status.blink {
+    animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+    0% { box-shadow: 0 0 5px red; }
+    50% { box-shadow: 0 0 20px red; }
+    100% { box-shadow: 0 0 5px red; }
+}
+/* CONTAINER APP STYLE */
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* GLASS EFFECT ON CARDS */
+
+.match, .standing {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,215,0,0.15);
+    border-radius: 12px;
+}
+
+/* DEPTH SHADOW */
+
+.match {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.section {
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    display: none;
+}
+
+.active-section {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
