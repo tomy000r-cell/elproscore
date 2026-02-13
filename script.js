@@ -15,28 +15,54 @@ function showSection(sectionId, event) {
   }
 }
 
-/* FAUX LIVE */
+/* ===== FAUX LIVE ULTRA RÉALISTE ===== */
 
 let minute = 55;
 let score1Home = 1;
 let score1Away = 0;
 
+const scoreElement = document.getElementById("score1");
+const minuteElement = document.getElementById("minute1");
+
+/* Animation BUT */
+function goalAnimation() {
+
+  const goalOverlay = document.createElement("div");
+  goalOverlay.classList.add("goal-overlay");
+  goalOverlay.innerHTML = "⚽ GOOOOAAAL ⚽";
+
+  document.body.appendChild(goalOverlay);
+
+  scoreElement.classList.add("goal-pulse");
+
+  setTimeout(() => {
+    goalOverlay.remove();
+    scoreElement.classList.remove("goal-pulse");
+  }, 2000);
+}
+
+/* Simulation live */
 setInterval(() => {
 
   minute++;
-  document.getElementById("minute1").innerText = minute + "'";
+  minuteElement.innerText = minute + "'";
 
-  if (Math.random() < 0.1) {
-    score1Home++;
-    document.getElementById("score1").innerText = score1Home + " - " + score1Away;
+  if (Math.random() < 0.15) {
+
+    if (Math.random() < 0.5) {
+      score1Home++;
+    } else {
+      score1Away++;
+    }
+
+    scoreElement.innerText = score1Home + " - " + score1Away;
+    goalAnimation();
   }
 
 }, 5000);
 
-/* Spotlight effect */
-
+/* Spotlight souris */
 document.addEventListener("mousemove", (e) => {
   document.body.style.setProperty('--x', e.clientX + 'px');
   document.body.style.setProperty('--y', e.clientY + 'px');
-  document.body.style.backgroundPosition = ${e.clientX/50}px ${e.clientY/50}px;
 });
