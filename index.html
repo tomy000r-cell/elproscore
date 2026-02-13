@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>ELPROSCORE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELPROSCORE</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- INTRO SCREEN -->
-<div id="introScreen">
-    <div class="intro-content">
-        <h1>👑 ELPROSCORE</h1>
-    </div>
+<div id="intro">
+    👑 ELPROSCORE
 </div>
 
 <header>
-    <h1 class="logo">👑 ELPROSCORE</h1>
+    <h1>👑 ELPROSCORE</h1>
+    <div id="clock"></div>
+    <div id="viewers">🔥 12458 spectateurs en direct</div>
 
-    <div id="liveClock"></div>
-    <div id="liveViewers">🔥 12 458 spectateurs en direct</div>
-
-    <nav>
-        <button class="active" onclick="showSection('live', event)">LIVE</button>
-        <button onclick="showSection('standings', event)">STANDINGS</button>
-        <button onclick="showSection('results', event)">RESULTS</button>
-    </nav>
+    <div class="nav">
+        <button onclick="showTab('live')">LIVE</button>
+        <button onclick="showTab('standings')">STANDINGS</button>
+        <button onclick="showTab('results')">RESULTS</button>
+    </div>
 </header>
 
-<section id="live" class="section active-section">
+<section id="live" class="tab active">
     <h2>Matchs en direct - Premier League</h2>
 
-    <div class="match" onclick="triggerGoal(this)">
-        <span class="team home">Manchester City</span>
-        <strong class="score">2 - 0</strong>
-        <span class="team away">Arsenal</span>
-        <span class="minute" data-minute="57">57'</span>
+    <div class="match">
+        <span class="team">Manchester City</span>
+        <span class="score">2 - 0</span>
+        <span class="team">Arsenal</span>
+        <span class="minute">57'</span>
     </div>
 
     <div class="match">
-        <span>Liverpool</span>
-        <strong>2 - 2</strong>
-        <span>Chelsea</span>
+        <span class="team">Liverpool</span>
+        <span class="score">2 - 2</span>
+        <span class="team">Chelsea</span>
         <span class="minute">HT</span>
     </div>
+
 </section>
 
-<section id="standings" class="section">
+<section id="standings" class="tab">
     <h2>Classement</h2>
     <p>1. Manchester City</p>
     <p>2. Arsenal</p>
-    <p>3. Liverpool</p>
-    <p>4. Chelsea</p>
 </section>
 
-<section id="results" class="section">
+<section id="results" class="tab">
     <h2>Résultats</h2>
     <p>Arsenal 1 - 0 Tottenham</p>
-    <p>United 3 - 1 Newcastle</p>
 </section>
 
 <footer>
-    ELPROSCORE © 2026
+ELPROSCORE © 2026
 </footer>
 
-<a href="https://t.me/AiBotElProfesor_bot" target="_blank" class="telegram-button">
-    🤖 AiBot El Profesor
+<a href="https://t.me/AiBotElProfesor_bot" target="_blank" class="telegram">
+🤖 AiBot El Profesor
 </a>
 
-<audio id="goalSound" preload="auto">
-    <source src="https://www.soundjay.com/human/sounds/crowd-cheer-01.mp3" type="audio/mpeg">
+<audio id="goalSound">
+<source src="https://www.soundjay.com/human/sounds/crowd-cheer-01.mp3">
 </audio>
 
 <script src="script.js"></script>
